@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Beraki Concrete Contractors | South Florida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #071426;
+    --navy-mid: #0f2342;
+    --slate-950: #020617;
+    --slate-700: #334155;
+    --slate-600: #475569;
+    --slate-500: #64748b;
+    --slate-400: #94a3b8;
+    --slate-300: #cbd5e1;
+    --slate-200: #e2e8f0;
+    --slate-100: #f1f5f9;
+    --slate-50: #f8fafc;
+    --amber: #fbbf24;
+    --amber-200: #fde68a;
+    --amber-300: #fcd34d;
+    --blue-800: #1e40af;
+    --white: #ffffff;
+    --font-display: 'Oswald', sans-serif;
+    --font-body: 'Source Sans 3', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: #fafaf9; color: #0f172a; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #f6c833; color: #071426; }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  button { font-family: var(--font-body); cursor: pointer; }
+
+  /* Layout */
+  .container { width: 100%; margin: 0 auto; padding: 0 1rem; }
+  @media (min-width: 640px) { .container { padding: 0 1.5rem; } }
+  @media (min-width: 1024px) { .container { padding: 0 2rem; max-width: 1280px; } }
+
+  .section { padding: 5.5rem 0; }
+  @media (min-width: 1024px) { .section { padding: 7rem 0; } }
+
+  /* Typography helpers */
+  .eyebrow { font-family: var(--font-display); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.24em; }
+  .display { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; }
+
+  /* Quote button */
+  .quote-button {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    background: var(--amber-300); color: var(--slate-950); border: none;
+    padding: 0.75rem 1.5rem; font-family: var(--font-body); font-weight: 900;
+    text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.95rem;
+    box-shadow: 6px 6px 0 var(--navy-mid); cursor: pointer;
+    transition: all 0.2s; border-radius: 2px; text-decoration: none;
+  }
+  .quote-button:hover { background: var(--amber-200); transform: translateY(-2px); box-shadow: 8px 8px 0 var(--navy-mid); }
+  .quote-button:active { transform: translateY(0); box-shadow: 3px 3px 0 var(--navy-mid); }
+  .quote-button svg { width: 1.1rem; height: 1.1rem; }
+
+  /* ── HEADER ── */
+  header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); border-bottom: 1px solid var(--slate-200); }
+  .topbar { display: block; background: #0a0f1a; padding: 0.5rem 1rem; text-align: center; color: var(--amber-300); font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.22em; transition: background 0.2s; }
+  .topbar:hover { background: #111827; }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.75rem 1rem; }
+  @media (min-width: 640px) { .header-inner { padding: 0.75rem 1.5rem; } }
+  @media (min-width: 1024px) { .header-inner { padding: 0.75rem 2rem; max-width: 1280px; margin: 0 auto; } }
+  .logo-wrap { display: flex; align-items: center; gap: 0.75rem; }
+  .logo-wrap img { height: 56px; width: auto; border-radius: 2px; object-fit: contain; }
+  .logo-text { display: none; line-height: 1.2; }
+  @media (min-width: 640px) { .logo-text { display: block; } }
+  .logo-name { display: block; font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #020617; }
+  .logo-sub { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--slate-500); }
+  nav { display: none; align-items: center; gap: 0.25rem; }
+  @media (min-width: 1024px) { nav { display: flex; } }
+  nav a { padding: 0.5rem 0.75rem; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--slate-700); transition: color 0.2s; }
+  nav a:hover { color: var(--blue-800); }
+  .header-ctas { display: none; align-items: center; gap: 0.5rem; }
+  @media (min-width: 768px) { .header-ctas { display: flex; } }
+  .btn-outline-dark { display: inline-flex; align-items: center; gap: 0.5rem; border: 2px solid #020617; padding: 0.5rem 1rem; font-size: 0.85rem; font-weight: 900; color: #020617; text-transform: uppercase; letter-spacing: 0.04em; transition: all 0.2s; border-radius: 2px; }
+  .btn-outline-dark:hover { background: #020617; color: white; transform: translateY(-2px); }
+  .menu-toggle { display: flex; border: 1px solid var(--slate-300); border-radius: 2px; padding: 0.5rem; background: none; }
+  @media (min-width: 1024px) { .menu-toggle { display: none; } }
+  .menu-toggle svg { width: 1.5rem; height: 1.5rem; color: #020617; }
+  .mobile-nav { display: none; border-top: 1px solid var(--slate-200); background: white; padding: 1rem; }
+  .mobile-nav.open { display: block; }
+  .mobile-nav a { display: block; padding: 0.75rem 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; color: #1e293b; background: var(--slate-50); border-radius: 2px; margin-bottom: 0.5rem; }
+
+  /* ── HERO ── */
+  .hero { position: relative; background: #020617; color: white; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.55; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, #020617 0%, rgba(2,6,23,0.8) 55%, rgba(15,35,66,0.35) 100%); }
+  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 38px 38px; }
+  .hero-content { position: relative; display: grid; min-height: 720px; align-items: center; gap: 2.5rem; padding: 5rem 0; }
+  @media (min-width: 1024px) { .hero-content { grid-template-columns: 1.08fr 0.72fr; } }
+  .hero h1 { font-family: var(--font-display); font-size: clamp(2.6rem, 6vw, 4.5rem); font-weight: 700; text-transform: uppercase; line-height: 0.95; letter-spacing: -0.01em; margin-top: 1.25rem; }
+  .hero p.lead { margin-top: 1.5rem; max-width: 36rem; font-size: 1.1rem; line-height: 1.8; color: #cbd5e1; font-weight: 500; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+  .btn-outline-white { display: inline-flex; align-items: center; gap: 0.5rem; border: 2px solid rgba(255,255,255,0.7); padding: 0.75rem 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.04em; color: white; transition: all 0.2s; border-radius: 2px; font-size: 0.95rem; }
+  .btn-outline-white:hover { background: white; color: #020617; }
+
+  /* Quote slab */
+  .quote-slab { background: rgba(2,6,23,0.75); border: 1px solid rgba(255,255,255,0.15); padding: 2rem; box-shadow: 0 25px 50px rgba(0,0,0,0.3); backdrop-filter: blur(12px); clip-path: polygon(0 0, 100% 0, 100% calc(100% - 34px), calc(100% - 34px) 100%, 0 100%); display: none; }
+  @media (min-width: 1024px) { .quote-slab { display: block; } }
+  .quote-slab-head { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+  .quote-slab h2 { font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; text-transform: uppercase; margin-top: 0.75rem; }
+  .quote-slab p { margin-top: 0.75rem; color: #94a3b8; line-height: 1.7; }
+  .slab-list { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+  .slab-list li { display: flex; align-items: center; gap: 0.75rem; font-size: 0.9rem; font-weight: 600; color: #e2e8f0; }
+  .slab-list li svg { color: var(--amber-300); width: 1.25rem; height: 1.25rem; flex-shrink: 0; }
+
+  /* ── SECTION INTRO ── */
+  .section-intro { max-width: 48rem; }
+  .section-intro h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; text-transform: uppercase; line-height: 1.1; color: #020617; margin-top: 0.75rem; }
+  .section-intro p { margin-top: 1rem; font-size: 1.1rem; line-height: 1.8; color: var(--slate-600); }
+
+  /* ── SERVICES ── */
+  .services-grid { display: grid; gap: 1.25rem; margin-top: 3rem; }
+  @media (min-width: 768px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1280px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+  .service-card { background: white; border: 1px solid var(--slate-200); overflow: hidden; box-shadow: 0 18px 45px rgba(15,23,42,0.08); transition: all 0.3s; }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 28px 65px rgba(15,23,42,0.16); }
+  .service-card-img { position: relative; height: 14rem; overflow: hidden; }
+  .service-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+  .service-card:hover .service-card-img img { transform: scale(1.05); }
+  .service-icon-badge { position: absolute; left: 1rem; top: 1rem; background: var(--amber-300); padding: 0.5rem 0.65rem; border-radius: 2px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+  .service-icon-badge svg { width: 1.25rem; height: 1.25rem; color: #020617; }
+  .service-card-body { padding: 1.5rem; }
+  .service-card-body h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; text-transform: uppercase; color: #020617; }
+  .service-card-body p { margin-top: 0.75rem; line-height: 1.75; color: var(--slate-600); }
+  .service-card-body .details { margin-top: 0.75rem; font-size: 0.875rem; font-weight: 600; color: var(--slate-500); line-height: 1.6; }
+  .card-link { margin-top: 1.25rem; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; color: var(--blue-800); transition: color 0.2s; font-size: 0.875rem; }
+  .card-link:hover { color: #020617; }
+  .card-link svg { width: 1rem; height: 1rem; }
+
+  /* ── WHY CHOOSE ── */
+  .why-grid { display: grid; gap: 2.5rem; margin-top: 0; }
+  @media (min-width: 1024px) { .why-grid { grid-template-columns: 0.9fr 1.1fr; align-items: start; } }
+  .pullquote { margin-top: 2rem; border-left: 8px solid var(--amber-300); background: #020617; padding: 1.5rem; color: white; box-shadow: 0 20px 40px rgba(0,0,0,0.25); }
+  .pullquote p { font-size: 1.05rem; font-weight: 700; line-height: 1.75; }
+  .benefits-grid { display: grid; gap: 1rem; }
+  @media (min-width: 640px) { .benefits-grid { grid-template-columns: 1fr 1fr; } }
+  .benefit-card { border: 1px solid var(--slate-200); background: var(--slate-50); padding: 1.5rem; transition: all 0.2s; }
+  .benefit-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+  .benefit-card svg { width: 1.75rem; height: 1.75rem; color: var(--blue-800); }
+  .benefit-card h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; text-transform: uppercase; color: #020617; margin-top: 1rem; }
+  .benefit-card p { margin-top: 0.75rem; line-height: 1.75; color: var(--slate-600); }
+
+  /* ── PROCESS ── */
+  .process-section { background: #020617; color: white; }
+  .process-grid { display: grid; gap: 3rem; }
+  @media (min-width: 1024px) { .process-grid { grid-template-columns: 0.85fr 1.15fr; } }
+  .process-section .section-intro h2 { color: white; }
+  .process-section .section-intro p { color: #94a3b8; }
+  .steps-grid { display: grid; gap: 1rem; }
+  @media (min-width: 640px) { .steps-grid { grid-template-columns: 1fr 1fr; } }
+  .step-card { border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04); padding: 1.5rem; box-shadow: 0 25px 50px rgba(0,0,0,0.2); }
+  .step-num { font-family: var(--font-display); font-size: 3rem; font-weight: 700; color: var(--amber-300); }
+  .step-card h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; text-transform: uppercase; margin-top: 1rem; }
+  .step-card p { margin-top: 0.75rem; line-height: 1.75; color: #94a3b8; }
+
+  /* ── GALLERY ── */
+  .bg-concrete { background-color: #f2f0eb; background-image: radial-gradient(circle at 18% 20%, rgba(15,35,66,0.06), transparent 28%), radial-gradient(circle at 82% 30%, rgba(246,200,51,0.12), transparent 30%), linear-gradient(135deg, rgba(15,35,66,0.035) 25%, transparent 25%), linear-gradient(225deg, rgba(15,35,66,0.035) 25%, transparent 25%); background-size: auto, auto, 48px 48px, 48px 48px; }
+  .gallery-header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; align-items: flex-end; }
+  .gallery-masonry { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 230px; gap: 1rem; margin-top: 2.5rem; }
+  .gallery-tile { position: relative; overflow: hidden; background: var(--slate-300); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+  .gallery-tile::after { content: ''; position: absolute; inset: 0; border: 1px solid rgba(255,255,255,0.2); pointer-events: none; }
+  .gallery-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+  .gallery-tile:hover img { transform: scale(1.05); }
+  .gallery-tile.tall { grid-row: span 2; }
+  @media (max-width: 767px) { .gallery-masonry { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; } }
+  @media (max-width: 479px) { .gallery-masonry { grid-template-columns: 1fr; grid-auto-rows: 220px; } }
+
+  /* ── AREAS ── */
+  .areas-section { background: #020617; color: white; }
+  .areas-grid { display: grid; gap: 2.5rem; }
+  @media (min-width: 1024px) { .areas-grid { grid-template-columns: 0.82fr 1.18fr; align-items: flex-end; } }
+  .areas-section h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; text-transform: uppercase; margin-top: 0.75rem; line-height: 1.1; }
+  .areas-section p { margin-top: 1.25rem; font-size: 1.05rem; line-height: 1.8; color: #94a3b8; }
+  .area-tags { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  @media (min-width: 640px) { .area-tags { grid-template-columns: repeat(3, 1fr); } }
+  .area-tag { border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); padding: 0.75rem 1rem; font-size: 0.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; color: #f1f5f9; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section { background: #f1f5f9; }
+  .testimonials-grid { display: grid; gap: 1.25rem; margin-top: 2.5rem; }
+  @media (min-width: 1024px) { .testimonials-grid { grid-template-columns: repeat(3, 1fr); } }
+  .testimonial-card { background: white; padding: 1.75rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+  .testimonial-card q { font-size: 1.05rem; font-weight: 600; line-height: 1.75; color: var(--slate-700); quotes: "\201C""\201D"; }
+  .testimonial-card q::before { content: open-quote; }
+  .testimonial-card q::after { content: close-quote; }
+  .testimonial-footer { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--slate-200); font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; color: #020617; }
+  .testimonial-footer span { display: block; font-size: 0.8rem; color: var(--blue-800); margin-top: 0.25rem; }
+
+  /* ── FAQ ── */
+  .faq-layout { display: grid; gap: 2.5rem; }
+  @media (min-width: 1024px) { .faq-layout { grid-template-columns: 0.8fr 1.2fr; align-items: start; } }
+  .faq-items { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { border: 1px solid var(--slate-200); }
+  .faq-btn { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem; text-align: left; background: none; border: none; font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; color: #020617; cursor: pointer; }
+  .faq-btn svg { width: 1.25rem; height: 1.25rem; transition: transform 0.25s; flex-shrink: 0; }
+  .faq-btn.open svg { transform: rotate(180deg); }
+  .faq-answer { display: none; border-top: 1px solid var(--slate-200); padding: 1.25rem; line-height: 1.75; color: var(--slate-600); }
+  .faq-answer.open { display: block; }
+
+  /* ── ESTIMATE FORM ── */
+  .estimate-layout { display: grid; gap: 2.5rem; }
+  @media (min-width: 1024px) { .estimate-layout { grid-template-columns: 0.82fr 1.18fr; } }
+  .estimate-image-side { position: relative; overflow: hidden; background: #020617; color: white; box-shadow: 0 25px 50px rgba(0,0,0,0.3); min-height: 480px; }
+  .estimate-image-side img { width: 100%; height: 100%; object-fit: cover; opacity: 0.65; position: absolute; inset: 0; }
+  .estimate-image-overlay { position: absolute; inset: 0; background: linear-gradient(to top, #020617 0%, rgba(2,6,23,0.5) 50%, transparent 100%); }
+  .estimate-image-text { position: absolute; bottom: 0; padding: 2rem; }
+  .estimate-image-text h2 { font-family: var(--font-display); font-size: 2.25rem; font-weight: 700; text-transform: uppercase; margin-top: 0.75rem; }
+  .estimate-image-text p { margin-top: 1rem; line-height: 1.75; color: #cbd5e1; }
+  .estimate-form-side { border: 1px solid var(--slate-200); background: var(--slate-50); padding: 1.5rem; box-shadow: 0 25px 50px rgba(15,23,42,0.1); }
+  @media (min-width: 640px) { .estimate-form-side { padding: 2rem; } }
+  .form-grid { display: grid; gap: 1rem; }
+  @media (min-width: 640px) { .form-grid { grid-template-columns: 1fr 1fr; } }
+  .form-group { display: grid; gap: 0.5rem; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-group label { font-size: 0.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; color: var(--slate-700); }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; border: 1px solid var(--slate-300); background: white; padding: 0.75rem 1rem;
+    font-size: 1rem; font-weight: 600; color: #020617; font-family: var(--font-body);
+    transition: border-color 0.2s, box-shadow 0.2s; border-radius: 2px;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--blue-800); box-shadow: 0 0 0 3px rgba(30,64,175,0.12); }
+  .form-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+
+  /* ── CONTACT BLOCKS ── */
+  .contact-tiles { display: grid; gap: 1.25rem; }
+  @media (min-width: 768px) { .contact-tiles { grid-template-columns: repeat(3, 1fr); } }
+  .contact-tile { display: flex; flex-direction: column; gap: 0.75rem; border: 1px solid var(--slate-200); background: var(--slate-50); padding: 1.75rem; color: var(--slate-700); box-shadow: 0 8px 25px rgba(0,0,0,0.06); transition: all 0.2s; text-decoration: none; }
+  .contact-tile:hover { transform: translateY(-4px); background: white; box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+  .contact-tile svg { width: 2rem; height: 2rem; color: var(--blue-800); }
+  .contact-tile .tile-label { font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.22em; color: var(--slate-500); }
+  .contact-tile strong { font-size: 1.1rem; font-weight: 900; color: #020617; }
+  .contact-tile.span-3 { grid-column: 1 / -1; }
+
+  /* ── PAGE HERO ── */
+  .page-hero { position: relative; background: #020617; color: white; padding: 6rem 0; overflow: hidden; }
+  .page-hero-noise { position: absolute; inset: 0; opacity: 0.4; background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 38px 38px; }
+  .page-hero-content { position: relative; }
+  .page-hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.75rem); font-weight: 700; text-transform: uppercase; line-height: 1; max-width: 64rem; margin-top: 1rem; }
+  .page-hero p { max-width: 48rem; font-size: 1.1rem; line-height: 1.8; color: #94a3b8; margin-top: 1.5rem; }
+  .page-hero-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+
+  /* ── FOOTER ── */
+  footer { background: #020617; color: white; }
+  .footer-inner { display: grid; gap: 2.5rem; padding: 3.5rem 0; }
+  @media (min-width: 1024px) { .footer-inner { grid-template-columns: 1.2fr 0.8fr 0.8fr; } }
+  footer img { height: 64px; width: auto; background: white; padding: 4px; }
+  .footer-brand h2 { font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; text-transform: uppercase; margin-top: 1.25rem; }
+  .footer-brand p { margin-top: 1rem; line-height: 1.75; color: #94a3b8; max-width: 32rem; }
+  .footer-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber-300); margin-bottom: 1rem; }
+  .footer-contact { line-height: 2; color: #94a3b8; }
+  .footer-contact a { color: #94a3b8; transition: color 0.2s; }
+  .footer-contact a:hover { color: var(--amber-300); }
+  .footer-links { display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer-links a { color: #94a3b8; transition: color 0.2s; font-weight: 600; }
+  .footer-links a:hover { color: var(--amber-300); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 1.25rem 0; text-align: center; font-size: 0.875rem; font-weight: 600; color: var(--slate-400); }
+
+  /* Utility */
+  .bg-white { background: white; }
+  .bg-slate-100 { background: #f1f5f9; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <a href="tel:+17866263085" class="topbar">Get a free quote today — call us (786) 626-3085</a>
+  <div class="header-inner">
+    <a href="#home" class="logo-wrap" onclick="showPage('home')">
+      <img src="https://irp.cdn-website.com/9986b7aa/import/clib/berakiconcrete_com/dms3rep/multi/Business-logo-200w-177x118.jpg" alt="Beraki Concrete Contractors logo" />
+      <div class="logo-text">
+        <span class="logo-name">Beraki Concrete</span>
+        <span class="logo-sub">Parkland &amp; Southern Florida</span>
+      </div>
+    </a>
+    <nav>
+      <a href="#home" onclick="showPage('home')">Home</a>
+      <a href="#about" onclick="showPage('about')">About Us</a>
+      <a href="#services" onclick="showPage('services')">Services</a>
+      <a href="#portfolio" onclick="showPage('portfolio')">Portfolio</a>
+      <a href="#areas" onclick="showPage('areas')">Service Area</a>
+      <a href="#contact" onclick="showPage('contact')">Contact</a>
+    </nav>
+    <div class="header-ctas">
+      <a href="tel:+17866263085" class="btn-outline-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"/></svg>
+        Call Now
+      </a>
+      <a href="#contact" onclick="showPage('contact')" class="quote-button">Free Quote</a>
+    </div>
+    <button class="menu-toggle" onclick="toggleMobile()" aria-label="Open navigation">
+      <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#home" onclick="showPage('home');closeMobile()">Home</a>
+    <a href="#about" onclick="showPage('about');closeMobile()">About Us</a>
+    <a href="#services" onclick="showPage('services');closeMobile()">Services</a>
+    <a href="#portfolio" onclick="showPage('portfolio');closeMobile()">Portfolio</a>
+    <a href="#areas" onclick="showPage('areas');closeMobile()">Service Area</a>
+    <a href="#contact" onclick="showPage('contact');closeMobile()">Contact</a>
+    <a href="tel:+17866263085" class="quote-button" style="margin-top:0.25rem;justify-content:center;">Call (786) 626-3085</a>
+  </div>
+</header>
+
+<!-- ══ HOME PAGE ══ -->
+<div id="page-home">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663637458486/nLz4VaMYPzCydgdSoGFLd6/beraki-hero-concrete-pour-2C2Q7mhdU34ExdVwQdcxR2.webp" alt="Concrete pour at a South Florida residential property" />
+    <div class="hero-overlay"></div>
+    <div class="hero-grid"></div>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <div>
+        <p class="eyebrow" style="color:var(--amber-300)">Top-rated concrete contractor · South Florida</p>
+        <h1>Transform your property with expert concrete services.</h1>
+        <p class="lead">Beraki Concrete Contractors delivers driveways, patios, pool decks, decorative concrete, foundations, repairs, and coatings with the practical craftsmanship homeowners and businesses need in South Florida.</p>
+        <div class="hero-ctas">
+          <a href="#contact" onclick="showPage('contact')" class="quote-button" style="font-size:1rem;">
+            Get My Free Quote
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </a>
+          <a href="tel:+17866263085" class="btn-outline-white">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"/></svg>
+            (786) 626-3085
+          </a>
+        </div>
+      </div>
+      <div class="quote-slab">
+        <div class="quote-slab-head">
+          <span class="eyebrow" style="color:var(--amber-300)">Estimate worksheet</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="var(--amber-300)" width="28" height="28"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+        </div>
+        <h2>Fast path to a concrete quote</h2>
+        <p>Tell us what you are building, repairing, or resurfacing. We will help define the scope and next step.</p>
+        <ul class="slab-list">
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd"/></svg> Driveways and slabs</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd"/></svg> Patios and pool decks</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd"/></svg> Stamped decorative finishes</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd"/></svg> Repairs, resurfacing, coatings</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section bg-white" id="services-section">
+  <div class="container">
+    <div class="section-intro">
+      <p class="eyebrow" style="color:var(--blue-800)">Our top services</p>
+      <h2>Concrete work built for Florida properties</h2>
+      <p>Whether you are improving curb appeal, adding outdoor living space, or restoring damaged concrete, Beraki keeps the process clear from consultation through final walkthrough.</p>
+    </div>
+    <div class="services-grid" id="home-services-grid"></div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="why-grid">
+      <div>
+        <div class="section-intro">
+          <p class="eyebrow" style="color:var(--blue-800)">Why choose Beraki</p>
+          <h2>Craftsmanship with a contractor's practical edge</h2>
+          <p>The site keeps the original Beraki promise: durable materials, customized work, clear communication, and a customer-first process.</p>
+        </div>
+        <div class="pullquote">
+          <p>Recognized for excellence and positioned for luxury residential work, Beraki Concrete brings detailed attention to driveways, patios, custom surfaces, and structural concrete.</p>
+        </div>
+      </div>
+      <div class="benefits-grid" id="benefits-grid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section process-section">
+  <div class="container">
+    <div class="process-grid">
+      <div class="section-intro">
+        <p class="eyebrow" style="color:var(--amber-300)">From vision to victory</p>
+        <h2>A transparent concrete process</h2>
+        <p>The rebuilt site keeps the same direct conversion flow as the original: call, request a quote, choose a service, and move toward a practical consultation.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card"><span class="step-num">01</span><h3>Consultation</h3><p>We learn your goals, location, budget, access requirements, preferred finish, and timeline.</p></div>
+        <div class="step-card"><span class="step-num">02</span><h3>Design &amp; Planning</h3><p>We recommend the scope, surface preparation, reinforcement, finish, and practical next steps.</p></div>
+        <div class="step-card"><span class="step-num">03</span><h3>Execution</h3><p>The crew handles forming, pouring, finishing, cleanup, and communication throughout the work.</p></div>
+        <div class="step-card"><span class="step-num">04</span><h3>Final Walkthrough</h3><p>We review the finished project with you and confirm the details before closing out the job.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY PREVIEW -->
+<section class="section bg-concrete">
+  <div class="container">
+    <div class="gallery-header">
+      <div class="section-intro">
+        <p class="eyebrow" style="color:var(--blue-800)">Portfolio / recent work</p>
+        <h2>Concrete project gallery in action</h2>
+        <p>Browse examples of slab preparation, driveway work, patios, pool decks, decorative surfaces, repairs, and specialty finishes from the existing Beraki portfolio.</p>
+      </div>
+      <a href="#portfolio" onclick="showPage('portfolio')" class="quote-button">View Gallery</a>
+    </div>
+    <div class="gallery-masonry" id="home-gallery"></div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="section areas-section">
+  <div class="container">
+    <div class="areas-grid">
+      <div>
+        <p class="eyebrow" style="color:var(--amber-300)">Serving Parkland and beyond</p>
+        <h2>Concrete services across Southern Florida</h2>
+        <p>Beraki Concrete proudly serves Parkland, Fort Lauderdale, and surrounding communities with knowledge of South Florida climate, soil conditions, and property styles.</p>
+      </div>
+      <div class="area-tags" id="home-area-tags"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials-section">
+  <div class="container">
+    <div class="section-intro">
+      <p class="eyebrow" style="color:var(--blue-800)">Client testimonials</p>
+      <h2>What customers say</h2>
+      <p>The rebuild preserves the testimonial flow from the original website while making it easier to scan on mobile and desktop.</p>
+    </div>
+    <div class="testimonials-grid" id="testimonials-grid"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="faq-layout">
+      <div class="section-intro">
+        <p class="eyebrow" style="color:var(--blue-800)">FAQ</p>
+        <h2>Common concrete questions</h2>
+        <p>Quick answers for homeowners and businesses comparing concrete options, timelines, decorative finishes, and quote requests.</p>
+      </div>
+      <div class="faq-items" id="faq-items"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ESTIMATE FORM -->
+<section class="section bg-white" id="estimate">
+  <div class="container">
+    <div class="estimate-layout">
+      <div class="estimate-image-side">
+        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663637458486/nLz4VaMYPzCydgdSoGFLd6/beraki-estimate-workbench-N3WYqfLmYak7i7hKmaCNhR.webp" alt="Concrete estimate worksheet with tools" />
+        <div class="estimate-image-overlay"></div>
+        <div class="estimate-image-text">
+          <p class="eyebrow" style="color:var(--amber-300)">Free estimate</p>
+          <h2>Request a concrete quote</h2>
+          <p>Submit your project details and we'll follow up to clarify measurements, finishes, access, and budget.</p>
+        </div>
+      </div>
+      <div class="estimate-form-side">
+        <form onsubmit="submitEstimate(event)">
+          <div class="form-grid">
+            <div class="form-group"><label>First Name</label><input name="firstName" required placeholder="First name" /></div>
+            <div class="form-group"><label>Last Name</label><input name="lastName" placeholder="Last name" /></div>
+            <div class="form-group"><label>Email</label><input name="email" type="email" required placeholder="you@example.com" /></div>
+            <div class="form-group"><label>Phone</label><input name="phone" type="tel" required placeholder="(786) 000-0000" /></div>
+            <div class="form-group">
+              <label>Project Type</label>
+              <select name="projectType">
+                <option value="" disabled selected>Select service</option>
+                <option>Concrete Driveway Installation</option>
+                <option>Patio &amp; Pool Deck Construction</option>
+                <option>Stamped &amp; Decorative Concrete</option>
+                <option>Concrete Foundations &amp; Slabs</option>
+                <option>Concrete Repair &amp; Resurfacing</option>
+                <option>Epoxy Flooring &amp; Coatings</option>
+                <option>Other / Additional Services</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Location</label><input name="location" placeholder="City or neighborhood" /></div>
+            <div class="form-group full">
+              <label>Timeline</label>
+              <select name="timeline">
+                <option value="" disabled selected>Preferred timing</option>
+                <option>As soon as possible</option>
+                <option>Within 1 month</option>
+                <option>1–3 months</option>
+                <option>Planning ahead</option>
+              </select>
+            </div>
+            <div class="form-group full"><label>Message</label><textarea name="message" required rows="6" placeholder="Tell us about your driveway, patio, pool deck, slab, repair, coating, or decorative concrete project."></textarea></div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="quote-button" style="font-size:1rem;">
+              Send Estimate Request
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            </button>
+            <a href="tel:+17866263085" class="btn-outline-dark">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"/></svg>
+              Call Instead
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /page-home -->
+
+<!-- ══ ABOUT PAGE ══ -->
+<div id="page-about" style="display:none">
+  <div class="page-hero">
+    <div class="page-hero-noise"></div>
+    <div class="container page-hero-content">
+      <p class="eyebrow" style="color:var(--amber-300)">About Beraki</p>
+      <h1>Local concrete experts serving Parkland &amp; Southern Florida</h1>
+      <p>Beraki Concrete Contractors specializes in durable, high-quality concrete solutions tailored to homeowners and businesses, with over 15 years of experience and a customer-first process.</p>
+      <div class="page-hero-ctas">
+        <a href="#contact" onclick="showPage('contact')" class="quote-button">Get My Free Quote</a>
+        <a href="tel:+17866263085" class="btn-outline-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"/></svg> (786) 626-3085</a>
+      </div>
+    </div>
+  </div>
+  <section class="section bg-white"><div class="container"><div class="why-grid"><div><div class="section-intro"><p class="eyebrow" style="color:var(--blue-800)">Why choose Beraki</p><h2>Craftsmanship with a contractor's practical edge</h2><p>Durable materials, customized work, clear communication, and a customer-first process.</p></div><div class="pullquote"><p>Recognized for excellence and positioned for luxury residential work, Beraki Concrete brings detailed attention to driveways, patios, custom surfaces, and structural concrete.</p></div></div><div class="benefits-grid" id="about-benefits-grid"></div></div></div></section>
+  <section class="section process-section"><div class="container"><div class="process-grid"><div class="section-intro"><p class="eyebrow" style="color:var(--amber-300)">From vision to victory</p><h2>A transparent concrete process</h2><p>Call, request a quote, choose a service, and move toward a practical consultation.</p></div><div class="steps-grid"><div class="step-card"><span class="step-num">01</span><h3>Consultation</h3><p>We learn your goals, location, budget, access requirements, preferred finish, and timeline.</p></div><div class="step-card"><span class="step-num">02</span><h3>Design &amp; Planning</h3><p>We recommend the scope, surface preparation, reinforcement, finish, and practical next steps.</p></div><div class="step-card"><span class="step-num">03</span><h3>Execution</h3><p>The crew handles forming, pouring, finishing, cleanup, and communication throughout the work.</p></div><div class="step-card"><span class="step-num">04</span><h3>Final Walkthrough</h3><p>We review the finished project with you and confirm the details before closing out the job.</p></div></div></div></div></section>
+  <section class="section areas-section"><div class="container"><div class="areas-grid"><div><p class="eyebrow" style="color:var(--amber-300)">Serving Parkland and beyond</p><h2>Concrete services across Southern Florida</h2><p>Beraki Concrete proudly serves Parkland, Fort Lauderdale, and surrounding communities with knowledge of South Florida climate, soil conditions, and property styles.</p></div><div class="area-tags" id="about-area-tags"></div></div></div></section>
+  <!-- Estimate repeated in about -->
+  <section class="section bg-white"><div class="container"><div class="estimate-layout"><div class="estimate-image-side"><img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663637458486/nLz4VaMYPzCydgdSoGFLd6/beraki-estimate-workbench-N3WYqfLmYak7i7hKmaCNhR.webp" alt="Concrete estimate worksheet" /><div class="estimate-image-overlay"></div><div class="estimate-image-text"><p class="eyebrow" style="color:var(--amber-300)">Free estimate</p><h2>Request a concrete quote</h2></div></div><div class="estimate-form-side"><form onsubmit="submitEstimate(event)"><div class="form-grid"><div class="form-group"><label>First Name</label><input name="firstName" required placeholder="First name" /></div><div class="form-group"><label>Last Name</label><input name="lastName" placeholder="Last name" /></div><div class="form-group"><label>Email</label><input name="email" type="email" required placeholder="you@example.com" /></div><div class="form-group"><label>Phone</label><input name="phone" type="tel" required placeholder="(786) 000-0000" /></div><div class="form-group full"><label>Message</label><textarea name="message" required rows="5" placeholder="Tell us about your project."></textarea></div></div><div class="form-actions"><button type="submit" class="quote-button">Send Estimate Request</button></div></form></div></div></div></section>
+</div>
+
+<!-- ══ SERVICES PAGE ══ -->
+<div id="page-services" style="display:none">
+  <div class="page-hero">
+    <div class="page-hero-noise"></div>
+    <div class="container page-hero-content">
+      <p class="eyebrow" style="color:var(--amber-300)">Concrete services</p>
+      <h1>Quality concrete solutions for every project</h1>
+      <p>From driveways and patios to decorative finishes, foundations, repairs, resurfacing, and epoxy coatings, Beraki Concrete offers a practical service menu for residential and commercial properties.</p>
+      <div class="page-hero-ctas"><a href="#contact" onclick="showPage('contact')" class="quote-button">Get My Free Quote</a><a href="tel:+17866263085" class="btn-outline-white">&#9990; (786) 626-3085</a></div>
+    </div>
+  </div>
+  <section class="section bg-white"><div class="container"><div class="section-intro"><p class="eyebrow" style="color:var(--blue-800)">Our top services</p><h2>Concrete work built for Florida properties</h2><p>Whether you are improving curb appeal, adding outdoor living space, or restoring damaged concrete, Beraki keeps the process clear from consultation through final walkthrough.</p></div><div class="services-grid" id="services-page-grid"></div></div></section>
+  <section class="section bg-white"><div class="container"><div class="faq-layout"><div class="section-intro"><p class="eyebrow" style="color:var(--blue-800)">FAQ</p><h2>Common concrete questions</h2><p>Quick answers for homeowners and businesses comparing concrete options, timelines, decorative finishes, and quote requests.</p></div><div class="faq-items" id="services-faq-items"></div></div></div></section>
+</div>
+
+<!-- ══ PORTFOLIO PAGE ══ -->
+<div id="page-portfolio" style="display:none">
+  <div class="page-hero">
+    <div class="page-hero-noise"></div>
+    <div class="container page-hero-content">
+      <p class="eyebrow" style="color:var(--amber-300)">Portfolio / recent work</p>
+      <h1>Concrete project gallery in Parkland, FL</h1>
+      <p>Get inspired by before-and-after transformations across driveways, patios, pool decks, stamped concrete, foundations, slabs, coatings, and repair work.</p>
+      <div class="page-hero-ctas"><a href="#contact" onclick="showPage('contact')" class="quote-button">Get My Free Quote</a><a href="tel:+17866263085" class="btn-outline-white">&#9990; (786) 626-3085</a></div>
+    </div>
+  </div>
+  <section class="section bg-concrete"><div class="container"><div class="gallery-masonry" id="portfolio-gallery"></div></div></section>
+  <section class="section bg-white"><div class="container"><div class="why-grid"><div><div class="section-intro"><p class="eyebrow" style="color:var(--blue-800)">Why choose Beraki</p><h2>Craftsmanship with a contractor's practical edge</h2><p>Durable materials, customized work, clear communication, and a customer-first process.</p></div><div class="pullquote"><p>Recognized for excellence and positioned for luxury residential work, Beraki Concrete brings detailed attention to driveways, patios, custom surfaces, and structural concrete.</p></div></div><div class="benefits-grid" id="portfolio-benefits-grid"></div></div></div></section>
+</div>
+
+<!-- ══ AREAS PAGE ══ -->
+<div id="page-areas" style="display:none">
+  <div class="page-hero">
+    <div class="page-hero-noise"></div>
+    <div class="container page-hero-content">
+      <p class="eyebrow" style="color:var(--amber-300)">Service area</p>
+      <h1>Concrete contractor for Parkland and Southern Florida</h1>
+      <p>Beraki Concrete serves Parkland, Fort Lauderdale, Hollywood, Plantation, Pembroke Pines, Pompano Beach, Davie, Sunrise, Weston, Coral Springs, Boca Raton, and Coconut Creek.</p>
+      <div class="page-hero-ctas"><a href="#contact" onclick="showPage('contact')" class="quote-button">Get My Free Quote</a><a href="tel:+17866263085" class="btn-outline-white">&#9990; (786) 626-3085</a></div>
+    </div>
+  </div>
+  <section class="section areas-section"><div class="container"><div class="areas-grid"><div><p class="eyebrow" style="color:var(--amber-300)">Serving Parkland and beyond</p><h2>Concrete services across Southern Florida</h2><p>Beraki Concrete proudly serves Parkland, Fort Lauderdale, and surrounding communities with knowledge of South Florida climate, soil conditions, and property styles.</p></div><div class="area-tags" id="areas-page-tags"></div></div></div></section>
+  <section class="section bg-white"><div class="container"><div class="section-intro"><p class="eyebrow" style="color:var(--blue-800)">Our top services</p><h2>Concrete work built for Florida properties</h2><p>Whether you are improving curb appeal, adding outdoor living space, or restoring damaged concrete, Beraki keeps the process clear from consultation through final walkthrough.</p></div><div class="services-grid" id="areas-services-grid"></div></div></section>
+</div>
+
+<!-- ══ CONTACT PAGE ══ -->
+<div id="page-contact" style="display:none">
+  <div class="page-hero">
+    <div class="page-hero-noise"></div>
+    <div class="container page-hero-content">
+      <p class="eyebrow" style="color:var(--amber-300)">Contact Beraki Concrete</p>
+      <h1>Let's bring your concrete vision to life</h1>
+      <p>Request a free quote today. Call, email, or submit the estimate form with your project details and preferred timeline.</p>
+    </div>
+  </div>
+  <section class="section bg-white">
+    <div class="container">
+      <div class="contact-tiles">
+        <a href="tel:+17866263085" class="contact-tile">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"/></svg>
+          <span class="tile-label">Phone</span>
+          <strong>+1 (786) 626-3085</strong>
+        </a>
+        <a href="mailto:berakiconcrete@gmail.com" class="contact-tile">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+          <span class="tile-label">Email</span>
+          <strong>berakiconcrete@gmail.com</strong>
+        </a>
+        <div class="contact-tile">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="tile-label">Hours</span>
+          <strong>Mon–Fri 8 AM–6 PM<br />Sat 9 AM–4 PM</strong>
+        </div>
+        <div class="contact-tile span-3">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+          <span class="tile-label">Location</span>
+          <strong>2600 Marina Bay East Drive, Fort Lauderdale, FL 33312</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section bg-white" id="contact-estimate">
+    <div class="container">
+      <div class="estimate-layout">
+        <div class="estimate-image-side">
+          <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663637458486/nLz4VaMYPzCydgdSoGFLd6/beraki-estimate-workbench-N3WYqfLmYak7i7hKmaCNhR.webp" alt="Concrete estimate worksheet" />
+          <div class="estimate-image-overlay"></div>
+          <div class="estimate-image-text">
+            <p class="eyebrow" style="color:var(--amber-300)">Free estimate</p>
+            <h2>Request a concrete quote</h2>
+            <p>Submit your project details and we'll follow up to clarify measurements, finishes, access, and budget.</p>
+          </div>
+        </div>
+        <div class="estimate-form-side">
+          <form onsubmit="submitEstimate(event)">
+            <div class="form-grid">
+              <div class="form-group"><label>First Name</label><input name="firstName" required placeholder="First name" /></div>
+              <div class="form-group"><label>Last Name</label><input name="lastName" placeholder="Last name" /></div>
+              <div class="form-group"><label>Email</label><input name="email" type="email" required placeholder="you@example.com" /></div>
+              <div class="form-group"><label>Phone</label><input name="phone" type="tel" required placeholder="(786) 000-0000" /></div>
+              <div class="form-group"><label>Project Type</label><select name="projectType"><option value="" disabled selected>Select service</option><option>Concrete Driveway Installation</option><option>Patio &amp; Pool Deck Construction</option><option>Stamped &amp; Decorative Concrete</option><option>Concrete Foundations &amp; Slabs</option><option>Concrete Repair &amp; Resurfacing</option><option>Epoxy Flooring &amp; Coatings</option><option>Other</option></select></div>
+              <div class="form-group"><label>Location</label><input name="location" placeholder="City or neighborhood" /></div>
+              <div class="form-group full"><label>Timeline</label><select name="timeline"><option value="" disabled selected>Preferred timing</option><option>As soon as possible</option><option>Within 1 month</option><option>1–3 months</option><option>Planning ahead</option></select></div>
+              <div class="form-group full"><label>Message</label><textarea name="message" required rows="6" placeholder="Tell us about your project."></textarea></div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="quote-button" style="font-size:1rem;">Send Estimate Request <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></button>
+              <a href="tel:+17866263085" class="btn-outline-dark">&#9990; Call Instead</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="https://irp.cdn-website.com/9986b7aa/import/clib/berakiconcrete_com/dms3rep/multi/Business-logo-200w-177x118.jpg" alt="Beraki Concrete Contractors logo" />
+        <h2>Beraki Concrete Contractors</h2>
+        <p>Your trusted concrete experts in Southern Florida. We bring pride and practical craftsmanship to driveways, patios, foundations, decorative concrete, repairs, and coatings.</p>
+      </div>
+      <div>
+        <p class="footer-title">Contact Information</p>
+        <div class="footer-contact">
+          <a href="tel:+17866263085">+1 (786) 626-3085</a><br />
+          <a href="mailto:berakiconcrete@gmail.com">berakiconcrete@gmail.com</a><br />
+          2600 Marina Bay East Drive<br />
+          Fort Lauderdale, FL 33312
+        </div>
+      </div>
+      <div>
+        <p class="footer-title">Quick Links</p>
+        <div class="footer-links">
+          <a href="#home" onclick="showPage('home')">Home</a>
+          <a href="#about" onclick="showPage('about')">About Us</a>
+          <a href="#services" onclick="showPage('services')">Services</a>
+          <a href="#portfolio" onclick="showPage('portfolio')">Portfolio</a>
+          <a href="#areas" onclick="showPage('areas')">Service Area</a>
+          <a href="#contact" onclick="showPage('contact')">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Beraki Concrete Contractors. All Rights Reserved.</div>
+</footer>
+
+<script>
+const PHONE = 'tel:+17866263085';
+const EMAIL = 'berakiconcrete@gmail.com';
+
+const galleryImages = [
+  'https://irp.cdn-website.com/9986b7aa/import/clib/berakiconcrete_com/dms3rep/multi/Gallery01-455x342.jpeg',
+  'https://irp.cdn-website.com/9986b7aa/import/clib/berakiconcrete_com/dms3rep/multi/Gallery03-455x342.jpeg',
+  'https://irp.cdn-website.com/9986b7aa/import/clib/berakiconcrete_com/dms3rep/multi/Gallery04-1920w-455x342.jpg',
+  'https://irp.cdn-website.com/9986b7aa/import/clib/berakiconcrete_com/dms3rep/multi/Gallery06-1920w-455x342.jpg',
+  'https://irp.cdn-website.com/9986b7aa/import/clib/berakiconcrete_com/dms3rep/multi/Gallery10-455x342.jpeg',
+  'https://irp.cdn-website.com/9986b7aa/import/clib/berakiconcrete_com/dms3rep/multi/Gallery15-455x342.jpeg',
+  'https://irp.cdn-website.com/9986b7aa/import/clib/berakiconcrete_com/dms3rep/multi/Gallery20-578w-455x271.jpg',
+  'https://irp.cdn-website.com/9986b7aa/import/clib/berakiconcrete_com/dms3rep/multi/Gallery24-455x342.jpeg',
+  'https://irp.cdn-website.com/9986b7aa/import/clib/berakiconcrete_com/dms3rep/multi/Gallery41-455x342.jpeg',
+];
+
+const services = [
+  { title: 'Concrete Driveway Installation', summary: 'Durable, cleanly finished driveways that upgrade curb appeal and stand up to Florida weather.', details: 'Includes site preparation, forming, reinforcement, pour, finish, control joints, and final walkthrough.', image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663637458486/nLz4VaMYPzCydgdSoGFLd6/beraki-driveway-finish-k32mXKmLGVpaAjZd9K4GSs.webp' },
+  { title: 'Patio & Pool Deck Construction', summary: 'Custom patios and pool decks for outdoor living, entertaining, and safer poolside movement.', details: 'Choose smooth, textured, brushed, or decorative finishes suited to South Florida outdoor spaces.', image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663637458486/nLz4VaMYPzCydgdSoGFLd6/beraki-pool-deck-HPtXAD47DM5iwau5xufwXU.webp' },
+  { title: 'Stamped & Decorative Concrete', summary: 'Patterns, textures, and colors that create the look of stone, tile, brick, or custom surfaces.', details: 'A practical way to add character to patios, walkways, driveways, and architectural concrete details.', image: galleryImages[7] },
+  { title: 'Concrete Foundations & Slabs', summary: 'Reliable slabs and foundations for residential, commercial, and renovation projects.', details: 'Precision layout, reinforced concrete, proper thickness planning, and clean execution from start to finish.', image: galleryImages[2] },
+  { title: 'Concrete Repair & Resurfacing', summary: 'Crack repair, resurfacing, overlays, and structural reinforcement for aging concrete surfaces.', details: 'A cost-conscious way to restore safety, appearance, and function without unnecessary replacement.', image: galleryImages[4] },
+  { title: 'Epoxy Flooring & Coatings', summary: 'Protective coatings and specialty finishes for garages, commercial floors, and workspaces.', details: 'Improve durability, maintenance, appearance, and resistance to stains and surface wear.', image: galleryImages[8] },
+];
+
+const serviceAreas = ['Parkland','Fort Lauderdale','Hollywood','Plantation','Pembroke Pines','Pompano Beach','Davie','Sunrise','Coral Springs','Boca Raton','Coconut Creek','Weston'];
+
+const benefits = [
+  ['15+ Years Experience','Industry expertise with residential and commercial concrete projects.'],
+  ['Florida-Ready Materials','Durable surfaces planned for heat, rain, soil conditions, and heavy use.'],
+  ['Custom Solutions','Finishes, layouts, textures, and budgets are matched to your property.'],
+  ['Clear Communication','Straightforward consultation, planning, execution, and final walkthrough.'],
+];
+
+const testimonials = [
+  ['Beraki Concrete transformed our backyard with a stunning pool deck. The attention to detail and professionalism were unmatched!','Sarah M.','Parkland, FL'],
+  ['Our new driveway is not only durable but also a focal point of our home. Thank you, Beraki Concrete, for exceeding our expectations!','John D.','Coral Springs, FL'],
+  ['The team was professional, on time, and delivered exactly what we envisioned. Highly recommend Beraki for any concrete project!','Emily R.','Boca Raton, FL'],
+];
+
+const faqs = [
+  ['What concrete services do you provide?','Beraki Concrete offers driveway installation, patio and pool deck construction, stamped and decorative concrete, foundations and slabs, repair and resurfacing, epoxy coatings, and additional concrete services for residential and commercial properties.'],
+  ['How do I get a quote?','Call Beraki Concrete or submit the estimate form with your project type, location, timeline, and a short message. The team can then follow up to clarify measurements, finishes, access, and budget.'],
+  ['How long does concrete take to cure?','Light use may be possible after about a week depending on the project and conditions, while full strength is commonly associated with a longer curing period of about 28 days. Project-specific guidance should be confirmed during your consultation.'],
+  ['Can I request a project similar to something in the gallery?','Yes. Reference the image or finish you like when you request an estimate so the team can discuss what is practical for your property, budget, and site conditions.'],
+];
+
+const checkSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:1.75rem;height:1.75rem;color:var(--blue-800)"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd"/></svg>`;
+const arrowSVG = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>`;
+const chevSVG = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>`;
+
+function renderServicesGrid(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = services.map(s => `
+    <article class="service-card">
+      <div class="service-card-img">
+        <img src="${s.image}" alt="${s.title}" loading="lazy" />
+        <div class="service-icon-badge">${checkSVG}</div>
+      </div>
+      <div class="service-card-body">
+        <h3>${s.title}</h3>
+        <p>${s.summary}</p>
+        <p class="details">${s.details}</p>
+        <a href="#services" onclick="showPage('services')" class="card-link">Learn more ${arrowSVG}</a>
+      </div>
+    </article>
+  `).join('');
+}
+
+function renderBenefits(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = benefits.map(([t,p]) => `
+    <div class="benefit-card">${checkSVG}<h3>${t}</h3><p>${p}</p></div>
+  `).join('');
+}
+
+function renderAreaTags(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = serviceAreas.map(a => `<span class="area-tag">${a}, FL</span>`).join('');
+}
+
+function renderGallery(id, limit) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const imgs = limit ? galleryImages.slice(0, limit) : galleryImages;
+  el.innerHTML = imgs.map((src, i) => `
+    <figure class="gallery-tile ${i === 1 || i === 4 ? 'tall' : ''}">
+      <img src="${src}" alt="Beraki Concrete project ${i+1}" loading="lazy" />
+    </figure>
+  `).join('');
+}
+
+function renderTestimonials() {
+  const el = document.getElementById('testimonials-grid');
+  if (!el) return;
+  el.innerHTML = testimonials.map(([q, name, place]) => `
+    <div class="testimonial-card">
+      <q>${q}</q>
+      <div class="testimonial-footer">${name}<span>${place}</span></div>
+    </div>
+  `).join('');
+}
+
+function renderFAQ(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = faqs.map(([ q, a ], i) => `
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFAQ(this)" data-idx="${i}">${q}${chevSVG}</button>
+      <div class="faq-answer">${a}</div>
+    </div>
+  `).join('');
+}
+
+function toggleFAQ(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = answer.classList.contains('open');
+  // close all in same container
+  const container = btn.closest('.faq-items');
+  container.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+  container.querySelectorAll('.faq-btn').forEach(b => b.classList.remove('open'));
+  if (!isOpen) { answer.classList.add('open'); btn.classList.add('open'); }
+}
+
+// Page routing
+const pages = ['home','about','services','portfolio','areas','contact'];
+function showPage(page) {
+  pages.forEach(p => {
+    const el = document.getElementById('page-' + p);
+    if (el) el.style.display = p === page ? '' : 'none';
+  });
+  window.scrollTo(0, 0);
+  // Lazy render
+  if (page === 'home') {
+    renderServicesGrid('home-services-grid');
+    renderBenefits('benefits-grid');
+    renderAreaTags('home-area-tags');
+    renderGallery('home-gallery', 6);
+    renderTestimonials();
+    renderFAQ('faq-items');
+  } else if (page === 'about') {
+    renderBenefits('about-benefits-grid');
+    renderAreaTags('about-area-tags');
+  } else if (page === 'services') {
+    renderServicesGrid('services-page-grid');
+    renderFAQ('services-faq-items');
+  } else if (page === 'portfolio') {
+    renderGallery('portfolio-gallery');
+    renderBenefits('portfolio-benefits-grid');
+  } else if (page === 'areas') {
+    renderAreaTags('areas-page-tags');
+    renderServicesGrid('areas-services-grid');
+  }
+}
+
+function toggleMobile() {
+  const nav = document.getElementById('mobileNav');
+  nav.classList.toggle('open');
+}
+function closeMobile() {
+  document.getElementById('mobileNav').classList.remove('open');
+}
+
+function submitEstimate(e) {
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const subject = encodeURIComponent('Free concrete estimate request');
+  const body = encodeURIComponent(
+    `Name: ${fd.get('firstName')||''} ${fd.get('lastName')||''}\nEmail: ${fd.get('email')||''}\nPhone: ${fd.get('phone')||''}\nProject Type: ${fd.get('projectType')||''}\nLocation: ${fd.get('location')||''}\nTimeline: ${fd.get('timeline')||''}\nMessage:\n${fd.get('message')||''}`
+  );
+  window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+}
+
+// Init
+showPage('home');
+</script>
+</body>
+</html>
